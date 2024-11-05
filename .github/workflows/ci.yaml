@@ -14,7 +14,7 @@ permissions:
   id-token: write
   contents: read
   pull-requests: read
-  
+
 jobs:
   CI:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
             echo "IMAGE_TAG=latest" >> $GITHUB_ENV
 
         - name: build active
-          run: docker build . -f ./backend-printing/Dockerfile -t $IMAGE_REPOSITORY:$IMAGE_TAG ./backend-printing
+          run: docker build -f ./backend-printing/Dockerfile -t $IMAGE_REPOSITORY:$IMAGE_TAG ./backend-printing
 
         - name: push
           run: |
