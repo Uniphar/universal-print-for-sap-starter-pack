@@ -12,7 +12,7 @@ COPY . /home/site/wwwroot
 WORKDIR /home/site/wwwroot
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org
 
 # Compile the python files
 RUN python -m compileall .
