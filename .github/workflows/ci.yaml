@@ -1,12 +1,10 @@
 name: Docker Container CI
 
 on:
-    push: 
-        branches:
-            - main
-        paths: 
+    pull_request:
+        paths:
             - 'backend-printing/**'
-            - '.github/workflows/ci.yaml'
+            - '.github/workflows/cd.yaml'
 
     workflow_dispatch:
 

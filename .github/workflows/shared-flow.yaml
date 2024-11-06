@@ -19,7 +19,7 @@ on:
         description: 'Azure Subscription ID'
 
 jobs:
-  CI:
+  shared:
     runs-on: ubuntu-latest
     
     steps:
