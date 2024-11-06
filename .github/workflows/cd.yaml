@@ -1,12 +1,10 @@
-name: Docker Container CI
+name: Docker Container CD
 
 on:
-    push: 
-        branches:
-            - main
-        paths: 
+    pull_request:
+        paths:
             - 'backend-printing/**'
-            - '.github/workflows/ci.yaml'
+            - '.github/workflows/cd.yaml'
 
     workflow_dispatch:
 
@@ -16,10 +14,10 @@ permissions:
     pull-requests: read
 
 jobs:
-    CI:
+    CD:
         uses: ./.github/workflows/shared-flow.yaml
         with:
-            imagePush: false
+            imagePush: true
         secrets:
             AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
             AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
