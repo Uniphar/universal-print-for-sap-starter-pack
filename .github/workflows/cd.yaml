@@ -1,11 +1,26 @@
-name: hello-world CD
-on: 
-  push:
-  workflow_dispatch:
-    
+name: Docker Container CD
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'backend-printing/**'
+            - '.github/workflows/cd.yaml'
+
+    workflow_dispatch:
+
+permissions:
+    id-token: write
+    contents: read
+    pull-requests: read
+
 jobs:
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: my-step
-        run: echo "Hello World!"
+    CD:
+        uses: ./.github/workflows/shared-flow.yaml
+        with:
+            imagePush: true
+        secrets:
+            AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+            AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+            AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_PLATFORM_SUBSCRIPTION_ID }}
