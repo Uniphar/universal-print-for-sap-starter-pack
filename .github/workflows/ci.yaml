@@ -4,7 +4,7 @@ on:
     pull_request:
         paths:
             - 'backend-printing/**'
-            - '.github/workflows/cd.yaml'
+            - '.github/workflows/ci.yaml'
 
     workflow_dispatch:
 
