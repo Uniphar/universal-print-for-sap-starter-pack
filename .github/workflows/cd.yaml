@@ -1,11 +1,13 @@
 name: Docker Container CD
 
 on:
-    pull_request:
+    push:
+        branches:
+            - main
         paths:
             - 'backend-printing/**'
             - '.github/workflows/cd.yaml'
-            
+
     workflow_dispatch:
 
 permissions:
