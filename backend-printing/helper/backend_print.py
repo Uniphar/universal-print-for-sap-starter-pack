@@ -181,7 +181,7 @@ class BackendPrint:
                         )
                         self.logger.info(
                             f"[{self.log_tag}] Fetched {len(print_items_from_queue)} items from the "
-                            + f" SAP queue for {sap_system.sap_sid}"
+                            + f" SAP queue  {queue} for {sap_system.sap_sid}"
                         )
                         for print_item in print_items_from_queue:
                             queue_item_params = json.loads(print_item["QItemParams"])
