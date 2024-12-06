@@ -134,7 +134,7 @@ class BackendPrint:
             sap_queues = print_client.get_print_queues()
             for queue in sap_queues:
                 if not print_client.find_print_queue(queue):
-                    return {"status": "error", "message": "Incorrect queue information"}
+                    return {"status": "error", "message": f"Incorrect queue information -  {queue.queue_name}"}
             self.logger.info(
                 f"[{self.log_tag}] SAP connection validated, saving to key vault"
             )
