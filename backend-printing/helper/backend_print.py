@@ -207,9 +207,9 @@ class BackendPrint:
                                 )
             # send the print messages to the storage queue
             if print_messages:
-                self._send_message_to_storage_queue(print_messages=print_messages)
+                queueResp = self._send_message_to_storage_queue(print_messages=print_messages)
                 self.logger.info(
-                    f"[{self.log_tag}] Sent {len(print_messages)} messages to the storage account"
+                    f"[{self.log_tag}] Sent {len(print_messages)} messages to the storage account {queueResp}"
                 )
                 self._update_print_messages_status(
                     print_messages=print_messages, status=PrintItemStatus.NEW.value
