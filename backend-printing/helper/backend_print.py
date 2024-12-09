@@ -85,7 +85,8 @@ class BackendPrint:
         """
         try:
             for print_message in print_messages:
-                StorageQueueClient().send_message(message=print_message)
+                queueResp = StorageQueueClient().send_message(message=print_message)
+                self.logger.info(f"[{self.log_tag}] Sent message to the storage account queue {queueResp}")
         except Exception as e:
             return {
                 "status": "error",
