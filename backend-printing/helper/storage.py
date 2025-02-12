@@ -50,7 +50,7 @@ class StorageQueueClient(AzureClient):
             encoded_message = json.dumps(message).encode("utf-8")
             # if message size is greater than 60KB, store it in blob
             # and send the blob url in the message
-            if len(encoded_message) > 60 * 1024:
+            if len(encoded_message) > 0: #60 * 1024
                 blob_guid = str(uuid4())
                 blob_url = self._store_document_to_blob(blob_guid, message)
                 encoded_message = json.dumps(
